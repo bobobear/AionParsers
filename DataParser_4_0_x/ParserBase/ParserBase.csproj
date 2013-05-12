@@ -1,0 +1,417 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3E15690D-1D96-4DF5-AAC6-5DE227A8B2B1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Jamie.ParserBase</RootNamespace>
+    <AssemblyName>ParserBase</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <OldToolsVersion>3.5</OldToolsVersion>
+    <UpgradeBackupLocation />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="JustAgile.Html, Version=3.5.0.0, Culture=neutral, PublicKeyToken=c4047c85aea66c1a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>.\JustAgile.Html.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Airlines\TeleportLocations.cs" />
+    <Compile Include="Airlines\NpcTeleporterTemplate.cs" />
+    <Compile Include="Client\ClientLevelMap.cs" />
+    <Compile Include="Client\ClientMissionFile.cs" />
+    <Compile Include="Client\ClientPresetFile.cs" />
+    <Compile Include="Client\ClientRecipesFile.cs" />
+    <Compile Include="Client\ClientGoodLists.cs" />
+    <Compile Include="Client\ClientTimeOfDay.cs" />
+    <Compile Include="Client\ClientGatherSrc.cs" />
+    <Compile Include="Client\ClientToypetFeed.cs" />
+    <Compile Include="Client\ClientTradeLists.cs" />
+    <Compile Include="Client\ClientToyPets.cs" />
+    <Compile Include="Client\ClientToypetWarehouse.cs" />
+    <Compile Include="Client\ClientWorldId.cs" />
+    <Compile Include="Client\ClientZoneMap.cs" />
+    <Compile Include="Client\ClientLevelData.cs" />
+    <Compile Include="Client\ClientZoneDataFile.cs" />
+    <Compile Include="Client\ClientInstanceCooltime.cs" />
+    <Compile Include="Client\ClientFlyPath.cs" />
+    <Compile Include="Client\ClientAirlineFile.cs" />
+    <Compile Include="Client\ClientAirportsFile.cs" />
+    <Compile Include="Client\ClientNpcFactions.cs" />
+    <Compile Include="Client\ClientTribeRelations.cs" />
+    <Compile Include="Client\ISpawnData.cs" />
+    <Compile Include="CommonTypes.cs" />
+    <Compile Include="Client\ClientCosmetics.cs">
+      <SubType>code</SubType>
+    </Compile>
+    <Compile Include="DecomposableItems\DecomposableItemsTemplate.cs" />
+    <Compile Include="Drops\Droplist.cs" />
+    <Compile Include="FlyPath\FlyPathTemplate.cs" />
+    <Compile Include="Items\BonusBase.cs" />
+    <Compile Include="Items\BonusInfo.cs" />
+    <Compile Include="Items\RecipeTemplates.cs" />
+    <Compile Include="Items\WrappedItems.cs" />
+    <Compile Include="Npcs\NpcTemplates.cs" />
+    <Compile Include="Npcs\NpcShouts.cs" />
+    <Compile Include="Npcs\SpawnData.cs" />
+    <Compile Include="OurPreset.cs" />
+    <Compile Include="Pets\PetFeed.cs" />
+    <Compile Include="PlayerClasses.cs" />
+    <Compile Include="Quests\NpcDialogFuncs.cs" />
+    <Compile Include="Client\ClientTitlesFile.cs" />
+    <Compile Include="Items\TaskExport.cs" />
+    <Compile Include="Quests\DialogHtml.cs" />
+    <Compile Include="Client\QuestsFile.cs" />
+    <Compile Include="Items\ItemExport.cs" />
+    <Compile Include="Items\ItemGroups.cs" />
+    <Compile Include="Items\ItemTemplates.cs" />
+    <Compile Include="Quests\DialogDictionary.cs" />
+    <Compile Include="Skills\CombineSkillType.cs" />
+    <Compile Include="Skills\MapModifiers.cs" />
+    <Compile Include="Quests\QuestDataFile.cs" />
+    <Compile Include="Skills\SkillMap.cs" />
+    <Compile Include="Skills\Actions\ActionModifiers.cs" />
+    <Compile Include="Skills\Actions\Actions.cs" />
+    <Compile Include="Skills\Effects\AlwaysEffects.cs" />
+    <Compile Include="Skills\Effects\BuffEffects.cs" />
+    <Compile Include="Skills\Modifiers\Change.cs" />
+    <Compile Include="Skills\Modifiers\ChangeList.cs" />
+    <Compile Include="Skills\ClientEffect.cs" />
+    <Compile Include="Client\ClientNpcsFile.cs" />
+    <Compile Include="Client\ClientSkillFile.cs" />
+    <Compile Include="Client\ClientUltraSkillFile.cs" />
+    <Compile Include="Skills\Conditions\Conditions.cs" />
+    <Compile Include="Skills\Effects\DamageEffects.cs" />
+    <Compile Include="Skills\Effects\DispelEffects.cs" />
+    <Compile Include="Skills\Effects\Effect.cs" />
+    <Compile Include="Skills\Effects\EffectClasses.cs" />
+    <Compile Include="Skills\Effects\Effects.cs" />
+    <Compile Include="Skills\Effects\EffectTypes.cs" />
+    <Compile Include="EntryValueAttribute.cs" />
+    <Compile Include="GenericNamedEnum.cs" />
+    <Compile Include="Skills\Effects\HealEffects.cs" />
+    <Compile Include="ImportUtility.cs" />
+    <Compile Include="Client\ClientItemsFile.cs" />
+    <Compile Include="ObjectDumper.cs" />
+    <Compile Include="Skills\Effects\Other.cs" />
+    <Compile Include="Skills\Effects\OverTimeEffects.cs" />
+    <Compile Include="Skills\PetUltraSkills.cs" />
+    <Compile Include="Skills\Properties\Properties.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Skills\Effects\ShieldEffects.cs" />
+    <Compile Include="Skills\SkillsLearns.cs" />
+    <Compile Include="Skills\SkillTemplate.cs" />
+    <Compile Include="Client\ClientStringsFile.cs" />
+    <Compile Include="Skills\Effects\SummonEffects.cs" />
+    <Compile Include="SkillTree\SkillTreeTemplate.cs" />
+    <Compile Include="TemplateImportPart.cs" />
+    <Compile Include="ToyPets\ToyPetsTemplate.cs" />
+    <Compile Include="Trade\TradeInGoodsLists.cs" />
+    <Compile Include="Trade\GoodsLists.cs" />
+    <Compile Include="Trade\TradeListFile.cs" />
+    <Compile Include="Tribes\TribesTemplate.cs" />
+    <Compile Include="Utility.cs" />
+    <Compile Include="World\ZoneMapTemplate.cs" />
+    <Compile Include="World\WorldMapsTemplate.cs" />
+    <Compile Include="XmlBool.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
+    <None Include="Data\quests\quest_monster.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Data\quests\quest_script_monster.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Dialogs\dialogs.dat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Data\faction\JobFactions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\faction\NpcFactions.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\items\client_assembly_items.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_combine_recipe.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_items_armor.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_items_etc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_items_misc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_item_prohibit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\client_item_random_option.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\items\client_setitem.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\item_flavor_desc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\polish_bonus_setlist.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\items\setitem.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\ClientEnslaveAttrs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\client_ai_datas.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\client_npcs.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\client_npc_goodslist.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\client_npc_purchase_list.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\client_npc_trade_in_list.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\npc_guide.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\npc_tribe_relation.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\npcs\npc_ui.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\toypet_warehouse.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\npcs\vehicles.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Data\npc_templates.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\abyss_race_bonuses.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_cosmetic_item_info.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_PCRace.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_pc_make_up_bonus.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_pc_vital_point.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_serial_killer.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pc\client_titles.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypets.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypet_doping.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypet_feed.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypet_item.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypet_looting.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\pets\toypet_warehouse.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\quests\challenge_task.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\quests\combine_task.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\quests\quest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_absolute_stat_to_pc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_polymorph_temp_skill.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_skills.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_skill_learns.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_skill_prohibit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\client_ultra_skills.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\skill_fx.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\skills\stigma_slots.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_bm.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_bmrestrict.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_dic_etc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_dic_item.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_dic_monster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_dic_people.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_dic_place.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_etc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_funcpet.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_gossip.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_item.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_item2.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_level.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_monster.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_msg.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_npc.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_quest.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_skill.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\strings\client_strings_ui.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
