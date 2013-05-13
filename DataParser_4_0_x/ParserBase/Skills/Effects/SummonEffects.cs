@@ -180,17 +180,17 @@
     }
 
     [Serializable]
-    public sealed class SummonTotemEffect : SummonTrapEffect
+    public sealed class SummonTotemEffect : SummonServantEffect
     {
     }
 
     [Serializable]
-    public sealed class SummonSkillAreaEffect : SummonTrapEffect
+    public sealed class SummonSkillAreaEffect : SummonServantEffect
     {
     }
 
     [Serializable]
-    public sealed class SummonHomingEffect : SummonServantEffect
+    public sealed class SummonHomingEffect : AbstractSummonEffect
     {
 
     }

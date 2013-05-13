@@ -155,7 +155,6 @@
 		public ArmorTypes armorType;
 
 		[XmlIgnore]
-		[DefaultValue(WeaponTypes.None)]
 		public WeaponTypes weaponType;
 
 		[XmlIgnore]

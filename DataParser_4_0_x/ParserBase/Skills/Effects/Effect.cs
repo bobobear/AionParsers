@@ -154,7 +154,7 @@
 		[XmlElement("change", Form = XmlSchemaForm.Unqualified)]
 		public ChangeList change;
 
-		[XmlAttribute]
+        [XmlAttribute("duration1")]
 		[DefaultValue(0)]
 		public int duration;
 
@@ -209,17 +209,14 @@
 		[DefaultValue(0)]
 		public int rng;
 
-		[XmlAttribute]
-		[DefaultValue(0)]
-		public decimal preeffects_mask_prob;
-
+        /*
 		[XmlAttribute]
 		[DefaultValue("0")]
 		public string preeffects_mask;
 
 		[XmlIgnore]
 		public bool preeffects_mask_probSpecified;
-		/*
+		
 		[XmlAttribute]
 		[DefaultValue(1)]
 		public decimal critical_prob;
@@ -269,18 +266,12 @@
 				}
 			}
 
+            /*
 			if (importObject.cond_preeffect != null) {
 				this.preeffects_mask = importObject.cond_preeffect.Substring(1, importObject.cond_preeffect.Length -1);
-				if (importObject.cond_preeffect_prob[1] != null)
-					this.preeffects_mask_prob = importObject.cond_preeffect_prob[1].Value;
-				else
-					this.preeffects_mask_prob = 1;
 			}
 
-			if (this.preeffects_mask_prob != 1 && e > 1 && this.preeffects_mask_prob != 100)
-				this.preeffects_mask_probSpecified = true;
-
-			/* Moved to Conditions List Below
+			 Moved to Conditions List Below
 			if (importObject.critical_prob_modifiers[1] != null) {
 				this.critical_prob = importObject.critical_prob_modifiers[1].Value;
 			}

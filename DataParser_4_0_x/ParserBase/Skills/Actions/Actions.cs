@@ -72,9 +72,9 @@
 		[XmlAttribute]
 		public int delta;
 
-		[XmlAttribute]
-		[DefaultValue(false)]
-		public bool percent;
+        [XmlAttribute]
+        [DefaultValue(false)]
+        public bool ratio;
 	}
 
 	[Serializable]
