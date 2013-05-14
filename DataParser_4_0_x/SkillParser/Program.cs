@@ -422,7 +422,7 @@
                     {
                         var mpUseAction = new MpUseAction();
                         periodicAction.checktime = sk.cost_time;
-                        mpUseAction.percent = parameter == CostType.MP_RATIO;
+                        mpUseAction.ratio = parameter == CostType.MP_RATIO;
 
                         if (sk.cost_checktime_lv > 0 || sk.cost_checktime > 0)
                         {
@@ -471,7 +471,7 @@
                         if (parameter == CostType.MP || parameter == CostType.MP_RATIO)
                         {
                             var mpUseAction = new MpUseAction();
-                            mpUseAction.percent = parameter == CostType.MP_RATIO;
+                            mpUseAction.ratio = parameter == CostType.MP_RATIO;
 
                             if (sk.cost_end > 0 || sk.cost_end_lv > 0)
                             {
