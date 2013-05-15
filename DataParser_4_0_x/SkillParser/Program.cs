@@ -373,7 +373,7 @@
                             TargetState s1 = (TargetState)Enum.Parse(typeof(TargetState), s, true);
                             state |= s1;
                         }
-                        catch (Exception e) { } 
+                        catch (Exception e) { }
                     }
                     //if (state != TargetState.NONE)
                     //{
@@ -382,7 +382,8 @@
                     //    properties.targetstatus = statusProperties;
                     //}
 
-                    if (sk.add_wpn_range) {
+                    if (sk.add_wpn_range)
+                    {
                         template.initproperties = new Properties();
                         template.initproperties.addweaponrange = new AddWeaponRangeProperty();
                     }
@@ -429,7 +430,7 @@
                     {
                         var mpUseAction = new MpUseAction();
                         periodicAction.checktime = sk.cost_time;
-                        mpUseAction.ratio = parameter == CostType.MP_RATIO;
+                        mpUseAction.percent = parameter == CostType.MP_RATIO;
 
                         if (sk.cost_checktime_lv > 0 || sk.cost_checktime > 0)
                         {
@@ -478,7 +479,7 @@
                         if (parameter == CostType.MP || parameter == CostType.MP_RATIO)
                         {
                             var mpUseAction = new MpUseAction();
-                            mpUseAction.ratio = parameter == CostType.MP_RATIO;
+                            mpUseAction.percent = parameter == CostType.MP_RATIO;
 
                             if (sk.cost_end > 0 || sk.cost_end_lv > 0)
                             {
@@ -767,7 +768,7 @@
                     eff.Template = template;
                     ourEffect.Import(eff, null);
 
-                   template.effects.EffectList.Add(ourEffect);
+                    template.effects.EffectList.Add(ourEffect);
                 }
 
                 #endregion
