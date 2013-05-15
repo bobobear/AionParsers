@@ -33,10 +33,6 @@
 		[DefaultValue(0)]
 		public int delta;
 
-		[XmlAttribute]
-		[DefaultValue(0)]
-		public int distance;
-
 		public void AddModifiers(string condition, ClientEffect importObject, int valuePos, int deltaPos) {
 			string[] condParts = condition.Split(new string[] { ",", " " }, StringSplitOptions.RemoveEmptyEntries);
 			this.modifiers = new ActionModifiers();
@@ -69,58 +65,58 @@
 					}
 				}
 				else {
-					try {
-						TargetState targetState = new NamedEnum<TargetState>(cond);
-						if (targetState == TargetState.BACK) {
-							// TODO: Null back Modifier with an NPC Skill?
-							if (importObject.reserved[valuePos] != null) {
-								this.modifiers.backdamage = new BackDamageModifier();
-								this.modifiers.backdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
-								this.modifiers.backdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
-							}
-						}
-						else if (targetState == TargetState.FRONT) {
-                            if (importObject.reserved[valuePos] != null)
-                            {
-                                this.modifiers.frontdamage = new FrontDamageModifier();
-                                this.modifiers.frontdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
-                                this.modifiers.frontdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
-                            }
-						}
-						/* Not Implemented Yet, and maybe implemented wrong in server, some effects block flying, not damage
-						else if (targetState == TargetState.FLYING) {
-							this.modifiers.flyingdamage = new FlyingDamageModifier();
-							if (importObject.reserved[valuePos] != null)
-								this.modifiers.flyingdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
-							if (importObject.reserved[deltaPos] != null)
-								this.modifiers.flyingdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
-						}
-						else if (targetState == TargetState.NON_FLYING) {
-							this.modifiers.nonflyingdamage = new NonFlyingDamageModifier();
-							if (importObject.reserved[valuePos] != null)
-								this.modifiers.nonflyingdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
-							if (importObject.reserved[deltaPos] != null)
-								this.modifiers.nonflyingdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
-						}
-						*/
-						else if (targetState != TargetState.NON_FLYING && targetState != TargetState.FLYING) {
-							if (this.modifiers.abnormaldamage == null)
-								this.modifiers.abnormaldamage = new List<AbnormalDamageModifier>();
-							var abnormaldamage = new AbnormalDamageModifier();
-							abnormaldamage.state = targetState;
-							if (importObject.reserved[valuePos] != null)
-								abnormaldamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
-							if (importObject.reserved[deltaPos] != null)
-								abnormaldamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
-							this.modifiers.abnormaldamage.Add(abnormaldamage);
-						}
-						if (condParts.Length > 1) {
-							Debug.Print("WARN: More than 1 modifier for skill: {0}", importObject.Skill.id);
-						}
-					}
-					catch {
-						Debug.Print("Modifier '{0}' not handled", cond);
-					}
+                    //try {
+                    //    TargetState targetState = new NamedEnum<TargetState>(cond);
+                    //    if (targetState == TargetState.BACK) {
+                    //        // TODO: Null back Modifier with an NPC Skill?
+                    //        if (importObject.reserved[valuePos] != null) {
+                    //            this.modifiers.backdamage = new BackDamageModifier();
+                    //            this.modifiers.backdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
+                    //            this.modifiers.backdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
+                    //        }
+                    //    }
+                    //    else if (targetState == TargetState.FRONT) {
+                    //        if (importObject.reserved[valuePos] != null)
+                    //        {
+                    //            this.modifiers.frontdamage = new FrontDamageModifier();
+                    //            this.modifiers.frontdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
+                    //            this.modifiers.frontdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
+                    //        }
+                    //    }
+                    //    /* Not Implemented Yet, and maybe implemented wrong in server, some effects block flying, not damage
+                    //    else if (targetState == TargetState.FLYING) {
+                    //        this.modifiers.flyingdamage = new FlyingDamageModifier();
+                    //        if (importObject.reserved[valuePos] != null)
+                    //            this.modifiers.flyingdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
+                    //        if (importObject.reserved[deltaPos] != null)
+                    //            this.modifiers.flyingdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
+                    //    }
+                    //    else if (targetState == TargetState.NON_FLYING) {
+                    //        this.modifiers.nonflyingdamage = new NonFlyingDamageModifier();
+                    //        if (importObject.reserved[valuePos] != null)
+                    //            this.modifiers.nonflyingdamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
+                    //        if (importObject.reserved[deltaPos] != null)
+                    //            this.modifiers.nonflyingdamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
+                    //    }
+                    //    */
+                    //    else if (targetState != TargetState.NON_FLYING && targetState != TargetState.FLYING) {
+                    //        if (this.modifiers.abnormaldamage == null)
+                    //            this.modifiers.abnormaldamage = new List<AbnormalDamageModifier>();
+                    //        var abnormaldamage = new AbnormalDamageModifier();
+                    //        abnormaldamage.type = targetState;
+                    //        if (importObject.reserved[valuePos] != null)
+                    //            abnormaldamage.value = Int32.Parse(importObject.reserved[valuePos].Trim());
+                    //        if (importObject.reserved[deltaPos] != null)
+                    //            abnormaldamage.delta = Int32.Parse(importObject.reserved[deltaPos].Trim());
+                    //        this.modifiers.abnormaldamage.Add(abnormaldamage);
+                    //    }
+                    //    if (condParts.Length > 1) {
+                    //        Debug.Print("WARN: More than 1 modifier for skill: {0}", importObject.Skill.id);
+                    //    }
+                    //}
+                    //catch {
+                    //    Debug.Print("Modifier '{0}' not handled", cond);
+                    //}
 				}
 			}
 
@@ -151,11 +147,11 @@
 	public abstract class AbstractAtkDrainInstantEffect : DamageEffect {
 		[XmlAttribute]
 		[DefaultValue(0)]
-		public int hp_percent;
+		public int hp;
 
 		[XmlAttribute]
 		[DefaultValue(0)]
-		public int mp_percent;
+		public int mp;
 
 		[XmlIgnore]
 		public bool percent;
@@ -168,12 +164,12 @@
 			base.Import(importObject, getters);
 
 			if (importObject.reserved[14] != null) {
-				hp_percent = Int32.Parse(importObject.reserved[14].Trim());
+				hp = Int32.Parse(importObject.reserved[14].Trim());
 				//percent = true;
 			}
 
 			if (importObject.reserved[16] != null) {
-				mp_percent = Int32.Parse(importObject.reserved[16].Trim());
+				hp = Int32.Parse(importObject.reserved[16].Trim());
 				//percent = true;
 			}
 
@@ -212,10 +208,10 @@
 				this.delta = Int32.Parse(importObject.reserved[0].Trim());
 
 			if (importObject.reserved[14] != null)
-				this.hp_percent = Int32.Parse(importObject.reserved[14].Trim());
+				this.hp = Int32.Parse(importObject.reserved[14].Trim());
 
 			if (importObject.reserved[16] != null)
-				this.mp_percent = Int32.Parse(importObject.reserved[16].Trim());
+				this.mp = Int32.Parse(importObject.reserved[16].Trim());
 
 			if (importObject.reserved[6] != null) {
 				string condition = importObject.reserved[6].Trim().ToLower();
@@ -293,7 +289,7 @@
 		public string signet;
 
 		[XmlAttribute]
-		public int prob;
+        public int probability;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
@@ -324,7 +320,7 @@
 				this.subeffect.skill_id = Utility.SkillIndex[subName].id;
 			}
 
-			this.prob = Int32.Parse(importObject.reserved[15]);
+			this.probability = Int32.Parse(importObject.reserved[15]);
 		}
 	}
 
@@ -336,8 +332,8 @@
 			this.value = Int32.Parse(importObject.reserved[3].Trim());
 			this.delta = Int32.Parse(importObject.reserved[2].Trim());
 
-			if(importObject.reserved[11] != null)
-				this.distance = Int32.Parse(importObject.reserved[11].Trim());
+            //if(importObject.reserved[11] != null)
+            //    this.distance = Int32.Parse(importObject.reserved[11].Trim());
 		}
 	}
 
@@ -414,20 +410,6 @@
 		[DefaultValue(0)]
 		public int delta2;
 
-		[XmlAttribute]
-		[DefaultValue(0)]
-		public int rnddmg;
-
-		[XmlIgnore]
-		public bool rngSpecified;
-		
-		[XmlAttribute]
-		[DefaultValue(false)]
-		public bool cannotmiss;
-
-		[XmlAttribute]
-		[DefaultValue(null)]
-		public string mode;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
@@ -467,7 +449,7 @@
 					this.subeffect.skill_id = skill.id;
 					if (importObject.reserved[17] != null) {
 						int chance = Int32.Parse(importObject.reserved[17].Trim());
-						this.subeffect.chance = chance != 100 ? chance : 0;
+						//this.subeffect.chance = chance != 100 ? chance : 0;
 					}
 				}
 			}
@@ -482,6 +464,7 @@
 				if (importObject.reserved[0] != null)
 					this.delta2 = Int32.Parse(importObject.reserved[0].Trim());
 			}
+            /*
 			if (importObject.reserved[6] == null) {
 				if (importObject.reserved[7] != null) {
 					this.rngSpecified = true;
@@ -490,7 +473,7 @@
 			}
 			if (importObject.reserved[10] != null)
 				this.cannotmiss = importObject.reserved[10] == "2" ? true : false;
-
+            */
 			/* Not sure about this one
 			if (importObject.reserved[14] != null)
 				this.mode = importObject.reserved[14] == "1" ? "PERCENT" : null;
@@ -519,6 +502,7 @@
 		}
 	}
 
+    /*
 	[Serializable]
 	public partial class MpAttackInstantEffect : DamageEffect {
 		[XmlAttribute]
@@ -533,12 +517,15 @@
 			if (importObject.reserved[0] != null)
 				this.delta = Int32.Parse(importObject.reserved[1].Trim());
 		}
-	}
+	}*/
 
-	public partial class FpAttackInstantEffect : DamageEffect {
+	public partial class FpAttackInstantEffect : Effect {
 		[XmlAttribute]
 		[DefaultValue(false)]
 		public bool percent;
+
+        [XmlAttribute]
+        public int value;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
@@ -553,8 +540,8 @@
 				this.value = 1;
 			}
 
-			if (importObject.reserved[0] != null)
-				this.delta = Int32.Parse(importObject.reserved[0].Trim());
+            //if (importObject.reserved[0] != null)
+            //    this.delta = Int32.Parse(importObject.reserved[0].Trim());
 		}
 	}
 
@@ -567,7 +554,7 @@
 			this.value = Int32.Parse(importObject.reserved[8].Trim());
 			this.delta = Int32.Parse(importObject.reserved[7].Trim());
 
-			this.hp_percent = Int32.Parse(importObject.reserved[14].Trim());
+			this.hp = Int32.Parse(importObject.reserved[14].Trim());
 		}
 	}
 }

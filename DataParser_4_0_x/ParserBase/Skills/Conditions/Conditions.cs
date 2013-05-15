@@ -7,19 +7,12 @@
 	using System.ComponentModel;
 
 	[XmlInclude(typeof(ArrowCheckCondition))]
-	[XmlInclude(typeof(TargetFlyingCondition))]
 	[XmlInclude(typeof(TargetCondition))]
 	[XmlInclude(typeof(SelfCondition))]
 	[XmlInclude(typeof(PlayerMovedCondition))]
 	[XmlInclude(typeof(DpCondition))]
 	[XmlInclude(typeof(HpCondition))]
 	[XmlInclude(typeof(MpCondition))]
-	[XmlInclude(typeof(WeaponCondition))]
-	[XmlInclude(typeof(ChainCondition))]
-	[XmlInclude(typeof(ArmorCondition))]
-	[XmlInclude(typeof(OnFlyCondition))]
-	[XmlInclude(typeof(CombatCheckCondition))]
-	[XmlInclude(typeof(AbnormalCondition))]
 
 	[Serializable]
 	public abstract partial class Condition
@@ -30,7 +23,7 @@
 	public partial class ArrowCheckCondition : Condition
 	{
 	}
-
+    /*
 	[Serializable]
 	public partial class TargetFlyingCondition : Condition
 	{
@@ -44,7 +37,7 @@
 		[DefaultValue(FlyRestriction.NONE)]
 		public FlyRestriction restriction;
 	}
-
+    */
 	[Serializable]
 	public partial class TargetCondition : Condition {
 		public TargetCondition() { }
@@ -143,6 +136,7 @@
 		public int delta;
 	}
 
+    /*
 	[Serializable]
 	public partial class WeaponCondition : Condition {
 		public WeaponCondition() { }
@@ -207,24 +201,24 @@
 		[XmlAttribute]
 		public TargetState value;
 	}
-
+    */
 	[Serializable]
 	public partial class Conditions
 	{
 		[XmlElement("arrowcheck", Form = XmlSchemaForm.Unqualified, Type = typeof(ArrowCheckCondition))]
-		[XmlElement("abnormal", Form = XmlSchemaForm.Unqualified, Type = typeof(AbnormalCondition))]
-		[XmlElement("targetflying", Form = XmlSchemaForm.Unqualified, Type = typeof(TargetFlyingCondition))]
+		//[XmlElement("abnormal", Form = XmlSchemaForm.Unqualified, Type = typeof(AbnormalCondition))]
+		//[XmlElement("targetflying", Form = XmlSchemaForm.Unqualified, Type = typeof(TargetFlyingCondition))]
 		[XmlElement("mp", Form = XmlSchemaForm.Unqualified, Type = typeof(MpCondition))]
 		[XmlElement("hp", Form = XmlSchemaForm.Unqualified, Type = typeof(HpCondition))]
 		[XmlElement("dp", Form = XmlSchemaForm.Unqualified, Type = typeof(DpCondition))]
 		[XmlElement("playermove", Form = XmlSchemaForm.Unqualified, Type = typeof(PlayerMovedCondition))]
-		[XmlElement("selfflying", Form = XmlSchemaForm.Unqualified, Type = typeof(SelfCondition))]
-		[XmlElement("armor", Form = XmlSchemaForm.Unqualified, Type = typeof(ArmorCondition))]
-		[XmlElement("weapon", Form = XmlSchemaForm.Unqualified, Type = typeof(WeaponCondition))]
-		[XmlElement("chain", Form = XmlSchemaForm.Unqualified, Type = typeof(ChainCondition))]
-		[XmlElement("onfly", Form = XmlSchemaForm.Unqualified, Type = typeof(OnFlyCondition))]
-		[XmlElement("noflying", Form = XmlSchemaForm.Unqualified, Type = typeof(NoFlyCondition))]
-		[XmlElement("combatcheck", Form = XmlSchemaForm.Unqualified, Type = typeof(CombatCheckCondition))]
+		[XmlElement("self", Form = XmlSchemaForm.Unqualified, Type = typeof(SelfCondition))]
+		//[XmlElement("armor", Form = XmlSchemaForm.Unqualified, Type = typeof(ArmorCondition))]
+		//[XmlElement("weapon", Form = XmlSchemaForm.Unqualified, Type = typeof(WeaponCondition))]
+		//[XmlElement("chain", Form = XmlSchemaForm.Unqualified, Type = typeof(ChainCondition))]
+		//[XmlElement("onfly", Form = XmlSchemaForm.Unqualified, Type = typeof(OnFlyCondition))]
+		//[XmlElement("noflying", Form = XmlSchemaForm.Unqualified, Type = typeof(NoFlyCondition))]
+		//[XmlElement("combatcheck", Form = XmlSchemaForm.Unqualified, Type = typeof(CombatCheckCondition))]
 		[XmlElement("target", Form = XmlSchemaForm.Unqualified, Type = typeof(TargetCondition))]
 		public List<Condition> ConditionList;
 	}

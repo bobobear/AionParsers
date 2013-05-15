@@ -26,9 +26,11 @@ namespace Jamie.Skills
         [DefaultValue(false)]
         public bool @unchecked;
 
+        /*
         [XmlElement]
         [DefaultValue(null)]
         public Conditions conditions;
+         */
 
         public Change()
         {

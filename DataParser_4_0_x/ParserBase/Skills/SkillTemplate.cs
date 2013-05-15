@@ -88,9 +88,11 @@
         [DefaultValue(null)]
         public string dispel_category;
 
+        /*
         [XmlAttribute("req_dispel_level")]
         [DefaultValue(0)]
         public int dispel_level;
+         */
 
 		[XmlAttribute]
 		public int cooldown;
@@ -104,6 +106,9 @@
 		public int pvp_duration;
 
         // missing self_chain_count
+        [XmlAttribute]
+        [DefaultValue(0)]
+        private int self_chain_count;
 
         [XmlAttribute]
         [DefaultValue(0)]
@@ -117,20 +122,22 @@
 		[DefaultValue(false)]
 		public bool stance;
 
-        /*
+     
 		[XmlAttribute("cooldownId")]
 		[DefaultValue(0)]
 		public int delay_id;
-         */
+        
 
 		[XmlAttribute]
 		[DefaultValue(0)]
 		public int skillset_exception;
 
 
+        /*
 		[XmlElement(Form = XmlSchemaForm.Unqualified)]
 		[DefaultValue(null)]
 		public PeriodicAction periodicactions;
+         */
 
 
 		public SkillTemplate() {

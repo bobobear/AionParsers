@@ -168,7 +168,7 @@
 
 		[XmlAttribute]
 		[DefaultValue(false)]
-		public bool release;
+		public bool disappear;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
@@ -177,7 +177,7 @@
 			if (importObject.reserved[1] != null) {
 				int additional = Int32.Parse(importObject.reserved[1].Trim());
 				if (additional == 1) {
-					release = true;
+					disappear = true;
 				} else {
 					Debug.Print("Unknown value for PetOrderUseUltraSkillEffect: {0}", additional);
 				}
@@ -576,17 +576,11 @@
 		[XmlAttribute]
 		public int resistchance;
 
-		[XmlIgnore]
-		[DefaultValue(false)]
-		public bool resistchanceSpecified;
-
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
 
 			if (importObject.reserved[1] != null)
 				this.resistchance = Int32.Parse(importObject.reserved[1].Trim());
-			if (this.resistchance != 100 && importObject.reserved[1] != null)
-				this.resistchanceSpecified = true;
 
 		}
 	}
@@ -614,9 +608,9 @@
 		[XmlAttribute]
 		public int value;
 
-		[XmlAttribute]
-		[DefaultValue(0)]
-		public int bufcount;
+        //[XmlAttribute]
+        //[DefaultValue(0)]
+        //public int bufcount;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
@@ -628,9 +622,9 @@
 			base.change.Add(change);
 			this.value = Int16.Parse(importObject.reserved[6]);
 
-			if (importObject.reserved[2] != null) {
-				this.bufcount = Int32.Parse(importObject.reserved[2].Trim());
-			}
+            //if (importObject.reserved[2] != null) {
+            //    this.bufcount = Int32.Parse(importObject.reserved[2].Trim());
+            //}
 		}
 	}
 
@@ -644,7 +638,7 @@
 	public sealed class RandomMoveLocEffect : Effect
 	{
 		[XmlAttribute]
-		public int distance;
+		public int value;
 
 		[XmlAttribute]
 		public float direction;
@@ -652,7 +646,7 @@
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
 
-			this.distance = Int32.Parse(importObject.reserved[1].Trim());
+			this.value = Int32.Parse(importObject.reserved[1].Trim());
 			direction = Single.Parse(importObject.reserved[2].Trim());
 		}
 	}
@@ -695,6 +689,7 @@
         }
     }
 
+    
     [Serializable]
     public sealed class ExtendAuraRangeEffect : Effect
     {
@@ -708,12 +703,14 @@
 		  change.func = StatFunc.PERCENT;
 
 		  if (importObject.reserved[8] != null && importObject.reserved[8].Trim() == "1") {
+              /*
 			  Condition flycondition = new OnFlyCondition();
 			  if (change.conditions == null)
 				  change.conditions = new Conditions();
 			  if (change.conditions.ConditionList == null)
 				  change.conditions.ConditionList = new List<Condition>();
 			  change.conditions.ConditionList.Add(flycondition);
+               */
 		  }
 		   
 		   this.change.Add(change);
@@ -745,6 +742,7 @@
 		}
     }
 
+    /*
     [Serializable]
     public sealed class CondSkillLauncherEffect : Effect {
 
@@ -771,4 +769,5 @@
 		    this.value = Int32.Parse(importObject.reserved[3].Trim());
 	    }
     }
+     */
 }

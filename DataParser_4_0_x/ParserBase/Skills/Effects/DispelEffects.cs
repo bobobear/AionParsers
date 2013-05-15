@@ -18,8 +18,8 @@
 		[XmlElement("effecttype", Form = XmlSchemaForm.Unqualified)]
 		public string[] effecttype;
 
-		[XmlElement("slottype", Form = XmlSchemaForm.Unqualified)]
-		public string slottype;
+        //[XmlElement("slottype", Form = XmlSchemaForm.Unqualified)]
+        //public string slottype;
 
 		[XmlAttribute]
 		public DispelType dispeltype;
@@ -50,7 +50,7 @@
 			}
 			else if (dispelType == "slot_type") {
 				dispeltype = DispelType.SLOTTYPE;
-				this.slottype = importObject.reserved[1].Trim().ToUpper();
+                //this.slottype = importObject.reserved[1].Trim().ToUpper();
 				skipAdd = true;
 			} else {
 				Debug.Print("Unknown DispelType: '{0}'", dispelType);
@@ -95,36 +95,19 @@
 	public abstract class DispelBaseEffect : Effect
 	{
 		[XmlAttribute]
-		public int dispel_level;
-
-		[XmlIgnore]
-		public int unknown1;
-
-		[XmlIgnore]
-		public int unknown2;
+		public int level;
 
 		[XmlAttribute]
-		public int power;
-
-		[XmlAttribute]
-		public int value;
+		public int count;
 
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
 
-			this.value = Int32.Parse(importObject.reserved[1].Trim());
-
-			if (importObject.reserved[0] != null)
-				this.unknown1 = Int32.Parse(importObject.reserved[0].Trim());
-
-			if (importObject.reserved[17] != null)
-				this.power = Int32.Parse(importObject.reserved[17].Trim());
+			this.count = Int32.Parse(importObject.reserved[1].Trim());
 
 			if (importObject.reserved[15] != null)
-				this.dispel_level = Int32.Parse(importObject.reserved[15].Trim());
+				this.level = Int32.Parse(importObject.reserved[15].Trim());
 
-			if (importObject.reserved[17] != null)
-				this.unknown2 = Int32.Parse(importObject.reserved[17].Trim());
 		}
 	}
 
@@ -158,7 +141,7 @@
 		public override void Import(ClientEffect importObject, IEnumerable<FieldInfo> getters) {
 			base.Import(importObject, getters);
 
-			base.value = Int32.Parse(importObject.reserved[8].Trim());
+			base.count = Int32.Parse(importObject.reserved[8].Trim());
 			if (importObject.reserved[7] != null)
 				this.delta = Int32.Parse(importObject.reserved[7].Trim());
 		}

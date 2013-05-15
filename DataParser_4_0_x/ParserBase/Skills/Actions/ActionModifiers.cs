@@ -120,7 +120,7 @@
 		public int delta;
 
 		[XmlAttribute]
-		public TargetState state;
+		public TargetState type;
 	}
 
 	[Serializable]
@@ -156,15 +156,6 @@
     [Flags]
 	public enum TargetState :long
 	{
-        NONE = 0,
-		[EntryValue("_back")]
-		BACK = 1,
-		[EntryValue("_flying")]
-		FLYING = 1<<1,
-		[EntryValue("_front")]
-		FRONT = 1<<2,
-		[EntryValue("_nflying")]
-		NON_FLYING = 1<<3,
 		[EntryValue("bleed")]
 		BLEED = 1<<4,
 		[EntryValue("blind")]
@@ -192,43 +183,7 @@
         [EntryValue("stagger")]
         STAGGER = 1<<16,
         [EntryValue("spin")]
-        SPIN = 1<<17,
-        [EntryValue("Root")]
-        Root = 1<<18,
-        [EntryValue("_class_ranger")]
-        CLASS_RANGER = 1<<19,
-        [EntryValue("_class_assassin")]
-        CLASS_ASSASSIN = 1<<20,
-        [EntryValue("_class_priest")]
-        CLASS_PRIEST = 1<<21,
-        [EntryValue("_class_chanter")]
-        CLASS_CHANTER = 1<<22,
-        [EntryValue("_class_wizard")]
-        CLASS_WARRIOR = 1<<23,
-        [EntryValue("_class_scout")]
-        SCOUT = 1<<24,
-        [EntryValue("_class_mage")]
-        MAGE = 1<<25,
-        [EntryValue("_class_cleric")]
-        CLERIC = 1<<26,
-        [EntryValue("_class_engineer")]
-        ENGINEER = 1<<27,
-        [EntryValue("_class_artist")]
-        ARTIST = 1<<28,
-        [EntryValue("_class_fighter")]
-        FIGHTER = 1<<29,
-        [EntryValue("_class_knight")]
-        KNIGHT = 1<<30,
-        [EntryValue("_class_elementallist")]
-        ELEMENTALLIST = 1<<31,
-        [EntryValue("_class_gunner")]
-        GUNNER = 1<<32,
-        [EntryValue("_class_bard")]
-        BARD = 1<<33,
-        [EntryValue("sleep")]
-        SLEEP = 1<<34,
-        [EntryValue("disease")]
-        DISEASE = (1<<35)
+        SPIN = 1<<17
 
 	}
 }

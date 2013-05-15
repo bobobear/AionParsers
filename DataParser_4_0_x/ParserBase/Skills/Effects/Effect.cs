@@ -10,9 +10,6 @@
 
 	[Serializable]
 	public partial class SubEffect {
-		[XmlAttribute]
-		[DefaultValue(0)]
-		public int chance;
 
 		[XmlAttribute]
 		public int skill_id;
@@ -69,14 +66,14 @@
 	[XmlInclude(typeof(HostileUpEffect))]
 	//[XmlInclude(typeof(HpUseOverTimeEffect))]
 	[XmlInclude(typeof(InvulnerableWingEffect))]
-	[XmlInclude(typeof(ItemHealDpEffect))]
-	[XmlInclude(typeof(ItemHealEffect))]
-	[XmlInclude(typeof(ItemHealFpEffect))]
-	[XmlInclude(typeof(ItemHealMpEffect))]
+	//[XmlInclude(typeof(ItemHealDpEffect))]
+	//[XmlInclude(typeof(ItemHealEffect))]
+	//[XmlInclude(typeof(ItemHealFpEffect))]
+	//[XmlInclude(typeof(ItemHealMpEffect))]
 	[XmlInclude(typeof(MagicCounterAtkEffect))]
 	[XmlInclude(typeof(MoveBehindEffect))]
-	[XmlInclude(typeof(MpAttackEffect))]
-	[XmlInclude(typeof(MpAttackInstantEffect))]
+	//[XmlInclude(typeof(MpAttackEffect))]
+	//[XmlInclude(typeof(MpAttackInstantEffect))]
 	[XmlInclude(typeof(MpHealEffect))]
 	[XmlInclude(typeof(MpHealInstantEffect))]
 	//[XmlInclude(typeof(MpUseOverTimeEffect))]
@@ -142,7 +139,7 @@
 	[XmlInclude(typeof(WeaponStatboostEffect))]
 	[XmlInclude(typeof(WeaponStatupEffect))]
 	[XmlInclude(typeof(XPBoostEffect))]
-	[XmlInclude(typeof(CondSkillLauncherEffect))]
+	//[XmlInclude(typeof(CondSkillLauncherEffect))]
 	[Serializable]
 	public abstract partial class Effect : IDynamicImport<ClientEffect> {
 		[XmlElement(Form = XmlSchemaForm.Unqualified)]
@@ -154,7 +151,7 @@
 		[XmlElement("change", Form = XmlSchemaForm.Unqualified)]
 		public ChangeList change;
 
-        [XmlAttribute("duration1")]
+        [XmlAttribute("duration")]
 		[DefaultValue(0)]
 		public int duration;
 
@@ -193,13 +190,9 @@
 		[DefaultValue(0)]
 		public int randomtime;
 
-		[XmlAttribute("accmod1")]
+		[XmlAttribute("acc_mod")]
 		[DefaultValue(0)]
 		public int acc_mod1;
-
-		[XmlAttribute("accmod2")]
-		[DefaultValue(0)]
-		public int acc_mod2;
 
 		[XmlAttribute]
 		[DefaultValue(false)]
@@ -226,9 +219,9 @@
 		public TargetState cond_effect;
 		*/
 
-		[XmlElement]
-		[DefaultValue(null)]
-		public Conditions conditions;
+        //[XmlElement]
+        //[DefaultValue(null)]
+        //public Conditions conditions;
 
 		#region IDynamicImport<ClientEffect> Members
 
@@ -249,9 +242,10 @@
 			if (importObject.accuracy_modifiers != null && importObject.accuracy_modifiers[0] != null)
 				acc_mod1 = importObject.accuracy_modifiers[0].Value;
 
+            /*
 			if (importObject.accuracy_modifiers != null && importObject.accuracy_modifiers[1] != null)
 				acc_mod2 = importObject.accuracy_modifiers[1].Value;
-
+            */
 			if (this is OverTimeEffect || this is SpellAtkDrainEffect || this is DiseaseEffect)
 				checktime = importObject.checktime;
 
@@ -286,21 +280,22 @@
 			}
 			*/
 
-			if (!String.IsNullOrEmpty(importObject.cond_status)) {
-				NamedEnum<TargetState> v = new NamedEnum<TargetState>(importObject.cond_status);
-				TargetState state = v;
+            //if (!String.IsNullOrEmpty(importObject.cond_status)) {
+            //    NamedEnum<TargetState> v = new NamedEnum<TargetState>(importObject.cond_status);
+            //    TargetState state = v;
 
-				if (this.conditions == null)
-					this.conditions = new Conditions();
-				if (this.conditions.ConditionList == null)
-					this.conditions.ConditionList = new List<Condition>();
-
-				switch (state) {
-					case TargetState.NON_FLYING: this.conditions.ConditionList.Add(new NoFlyCondition()); break;
-					case TargetState.FLYING: this.conditions.ConditionList.Add(new TargetFlyingCondition()); break;
-					default: this.conditions.ConditionList.Add(new AbnormalCondition(state)); break;
-				}
-			}
+            //    if (this.conditions == null)
+            //        this.conditions = new Conditions();
+            //    if (this.conditions.ConditionList == null)
+            //        this.conditions.ConditionList = new List<Condition>();
+            //    /*
+            //    switch (state) {
+            //        case TargetState.NON_FLYING: this.conditions.ConditionList.Add(new NoFlyCondition()); break;
+            //        case TargetState.FLYING: this.conditions.ConditionList.Add(new TargetFlyingCondition()); break;
+            //        default: this.conditions.ConditionList.Add(new AbnormalCondition(state)); break;
+            //    }
+            //     */
+            //}
 		}
 
 		#endregion
@@ -406,10 +401,13 @@
 					change.value *= 1000;
 
 				if (importObject.type == EffectType.WeaponStatBoost || importObject.type == EffectType.WeaponStatUp) {
+                    /*
 					if(change.conditions == null)
 						change.conditions = new Conditions();
 					if(change.conditions.ConditionList == null)
 						change.conditions.ConditionList = new List<Condition>();
+                     */
+                    /*
 					WeaponCondition condition = new WeaponCondition();
 
 					// Make some corrections to maintain server compatibility with exisitng enumerations
@@ -418,15 +416,18 @@
 
 					condition.weapon = required_weapons;
 					change.conditions.ConditionList.Add(condition);
+                     * */
 				}
 
 				if (importObject.reserved[8] != null && importObject.reserved[8].Trim() == "1") {
+                    /*
 					Condition flycondition = new OnFlyCondition();
 					if (change.conditions == null)
 						change.conditions = new Conditions();
 					if (change.conditions.ConditionList == null)
 						change.conditions.ConditionList = new List<Condition>();
 					change.conditions.ConditionList.Add(flycondition);
+                     */
 				}
 
 				this.change.Add(change);

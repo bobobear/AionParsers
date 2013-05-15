@@ -290,7 +290,7 @@
                 template.chain_skill_prob = sk.chain_skill_prob1 == 0 && sk.chain_skill_prob2 != 0 ? sk.chain_skill_prob2 : 0;
                 //template.dispel_category = sk.dispel_category.ToString().ToUpper();
                 template.dispel_category = sk.getDispellCategory();
-                template.dispel_level = sk.required_dispel_level;
+                //template.dispel_level = sk.required_dispel_level;
                 //template.delay_id = sk.delay_id;
 
                 if (!String.IsNullOrEmpty(sk.penalty_skill_succ))
@@ -365,11 +365,15 @@
                     var importUtil = Utility<ClientSkill>.Instance;
                     List<string> states = new List<string>();
                     importUtil.Export<string>(sk, "target_valid_status", states);
-                    TargetState state = TargetState.NONE;
+                    TargetState state = 0;
                     foreach (string s in states)
                     {
-                        TargetState s1 = (TargetState)Enum.Parse(typeof(TargetState), s, true);
-                        state |= s1;
+                        try
+                        {
+                            TargetState s1 = (TargetState)Enum.Parse(typeof(TargetState), s, true);
+                            state |= s1;
+                        }
+                        catch (Exception e) { } 
                     }
                     //if (state != TargetState.NONE)
                     //{
@@ -395,19 +399,22 @@
                 List<Condition> startList = new List<Condition>();
                 List<Action> actionList = new List<Action>();
 
-                TargetFlyingCondition targetflyingcondition = null;
+                //TargetFlyingCondition targetflyingcondition = null;
                 TargetCondition targetcondition = null;
 
+                /*
                 if (sk.target_species_restriction != SpeciesRestriction.None && sk.target_species_restriction != SpeciesRestriction.All)
                 {
-                    targetcondition = new TargetCondition((TargetAttribute)sk.target_species_restriction);
+                    targetcondition = new TargetCondition((FlyingRestriction)sk.target_species_restriction);
                     startList.Add(targetcondition);
-                }
+                }*/
 
+                /*
                 if (sk.required_leftweapon != LeftWeapon.None)
                 {
                     useEquipmentConditionsList.Add(new ArmorCondition(sk.required_leftweapon.ToString().ToUpper()));
                 }
+                 */
 
                 // Periodic Actions
                 if (sk.cost_checktime > 0 || sk.cost_toggle > 0)
@@ -422,7 +429,7 @@
                     {
                         var mpUseAction = new MpUseAction();
                         periodicAction.checktime = sk.cost_time;
-                        mpUseAction.ratio = parameter == CostType.MP_RATIO;
+                        mpUseAction.percent = parameter == CostType.MP_RATIO;
 
                         if (sk.cost_checktime_lv > 0 || sk.cost_checktime > 0)
                         {
@@ -440,7 +447,7 @@
                     {
                         var hpUseAction = new HpUseAction();
                         periodicAction.checktime = sk.cost_time;
-                        hpUseAction.ratio = parameter == CostType.HP_RATIO;
+                        hpUseAction.percent = parameter == CostType.HP_RATIO;
 
                         if (sk.cost_checktime_lv > 0 || sk.cost_checktime > 0)
                         {
@@ -456,7 +463,7 @@
                         periodicAction.hpuse = hpUseAction;
                     }
 
-                    template.periodicactions = periodicAction;
+                    //template.periodicactions = periodicAction;
                 }
                 else
                 {
@@ -471,7 +478,7 @@
                         if (parameter == CostType.MP || parameter == CostType.MP_RATIO)
                         {
                             var mpUseAction = new MpUseAction();
-                            mpUseAction.ratio = parameter == CostType.MP_RATIO;
+                            mpUseAction.percent = parameter == CostType.MP_RATIO;
 
                             if (sk.cost_end > 0 || sk.cost_end_lv > 0)
                             {
@@ -489,7 +496,7 @@
                         else if (parameter == CostType.HP || parameter == CostType.HP_RATIO)
                         {
                             var hpUseAction = new HpUseAction();
-                            hpUseAction.ratio = parameter == CostType.HP_RATIO;
+                            hpUseAction.percent = parameter == CostType.HP_RATIO;
 
                             if (sk.cost_end > 0 || sk.cost_end_lv > 0)
                             {
@@ -512,10 +519,11 @@
                     startList.Add(new MpCondition(sk.cost_end, sk.cost_end_lv));
                 }
 
+                /*
                 if (sk.required_leftweapon != LeftWeapon.None)
                 {
                     startList.Add(new ArmorCondition(sk.required_leftweapon.ToString().ToUpper()));
-                }
+                }*/
 
                 if (sk.use_arrow != null && sk.use_arrow != "0")
                 { // 3 arena skills have FX_pow, FX_HIT and weaponbody
@@ -532,7 +540,7 @@
                     startList.Add(new DpCondition(sk.cost_dp));
                     actionList.Add(new DpUseAction(sk.cost_dp, sk.cost_dp_lv));
                 }
-
+                /*
                 string required_weapons = getRequiredWeapons(sk);
                 if (required_weapons != null)
                 {
@@ -559,8 +567,10 @@
 
                     startList.Add(chain);
                 }
+                 */
 
                 // Self Flying Start Condition
+                /*
                 restriction = (FlyRestriction)sk.self_flying_restriction;
                 if (restriction != FlyRestriction.NONE)
                     startList.Add(new SelfCondition(restriction));
@@ -569,6 +579,7 @@
                 {
                     startList.Add(new CombatCheckCondition());
                 }
+                */
 
                 if (sk.component != null)
                 {
@@ -756,7 +767,7 @@
                     eff.Template = template;
                     ourEffect.Import(eff, null);
 
-                    template.effects.EffectList.Add(ourEffect);
+                   template.effects.EffectList.Add(ourEffect);
                 }
 
                 #endregion

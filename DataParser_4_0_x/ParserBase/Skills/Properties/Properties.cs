@@ -25,9 +25,15 @@
 
         [XmlElement("targetspecies", Form = XmlSchemaForm.Unqualified)]
         public TargetSpeciesProperty targetspecies;
+
+        /// <remarks/>
+        [XmlElement("targetstatus", Form = XmlSchemaForm.Unqualified)]
+        public TargetStatusProperty targetstatus;
 	}
 
     /// <remarks/>
+    /// 
+    [System.Xml.Serialization.XmlIncludeAttribute(typeof(TargetSpeciesProperty))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TargetStatusProperty))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TargetRelationProperty))]
     [System.Xml.Serialization.XmlIncludeAttribute(typeof(TargetRangeProperty))]

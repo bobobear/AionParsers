@@ -74,11 +74,13 @@
 		// NO DATA
 	}
 
+    /*
 	[Serializable]
 	public sealed class MpAttackEffect : OverTimeEffect
 	{
 		// NO DATA
 	}
+     */
 	/*
 	[Serializable]
 	public sealed class MpUseOverTimeEffect : OverTimeEffect

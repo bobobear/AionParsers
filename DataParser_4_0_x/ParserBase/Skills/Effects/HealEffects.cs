@@ -83,9 +83,6 @@
 	public sealed class HealCastorOnAttackedEffect : AbstractVdpEffect
 	{
 		[XmlAttribute]
-		public decimal range = 5.0m;
-
-		[XmlAttribute]
 		public string type = "HP";
 
 		// distance is always 5 meters (res4)
